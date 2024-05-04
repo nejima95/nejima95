@@ -1,4 +1,10 @@
-### Hi there 👋
+🔭 I’m currently working on Am curently working on a website porfolio as I've linked in this github.
+🌱 I’m currently learning Am currently learning website creation and game development as well.
+👯 I’m looking to collaborate on many projects that include game development and website creation
+💬 Ask me about anything coding related
+📫 How to reach me: nejimaahmed7@gmail.com
+😄 Pronouns: she/her
+⚡ Fun fact: I have alot of different skills in diferent areas. (exampl: am good at art,dancing,coding,learning new thing, and etc.)
 
 <!--
 **nejima95/nejima95** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
