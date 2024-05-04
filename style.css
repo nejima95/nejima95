@@ -1,0 +1,225 @@
+@import url('https://fonts.googleapis.com/css2?family=Honk&display=swap');
+.logo-photo{
+	float: 10px;
+	max-width: 13%;
+	height: auto;
+	margin: 10px 0 50px 30px;
+	justify-content: left;
+	align-content: center;
+	border-radius: 50%;
+	border: 10px solid #ffffff;
+	position: absolute;
+    top: 180px;
+    left: 1015px;
+}
+
+#homehero{
+	background-image:url(images/waves.jpg);
+	height: 300px;
+  background-size: cover;
+}
+.home-photo{
+	float: 10px;
+	max-width: 30%;
+	height: auto;
+	margin: 10px 0 50px 30px;
+	border-radius: 20px;
+}
+header{
+	height: 135px;
+}
+body{
+	font-family: 'lato', monospace;
+	margin: 0;
+	border-top: 10px solid mediumpurple;
+	border-bottom: 10px solid mediumpurple;
+
+}
+nav{
+	background-color: mediumpurple;
+	border-top: 2px  mediumpurple solid;
+	border-bottom: 2px purple;
+	padding: 2px;
+	font-weight: bold;
+	text-align: center;
+	text-shadow: 2px 2px 2px black;
+	color: mediumpurple;
+	height: 30px;
+}
+
+h1{
+	font-family: initial;
+	color: mediumpurple;
+	font-size: 60px;
+	text-shadow: 2px 2px 2px black;
+	text-align: center;
+	padding: 50px 0;
+	margin:0;
+}
+h2{
+	font-family: initial;
+	color: #ffffff;
+	text-align: center;
+	padding: 50px 0 pink;
+	background-size: cover;
+	padding-top: 100px;
+	padding-bottom: 200px;
+	margin-right:  160px;
+}
+h3{
+	font-family: initial;
+	text-align: center;
+	color: #ffffff;
+	background-color: mediumpurple;
+
+}
+h4{
+	font-family: initial;
+	color: black;
+	text-align: left;
+}
+h5{
+	font-family: initial;
+	color: #ffffff;
+	text-align: center;
+}
+
+h6{
+	font-family: initial;
+	color: #ffffff;
+	text-align: center;
+}
+h7{
+	font-family: initial;
+	color: #ffffff;
+	text-align: center;
+}
+main{
+	max-width: 800px;
+	margin: 20px auto;
+}
+footer{
+	text-align: center;
+	border-top: 1px solid gray;
+	padding: 10px;
+	clear: both;
+}
+/* footer link colors */
+a:link{
+	color: #ffffff;
+}
+a:visited{
+	color: hotpink;
+}
+a:hover{
+	color: hotpink;
+}
+a:active{
+	color: #ffffff;
+}
+
+/* vertical navigation bar */
+nav ul{
+  list-style-type: none;
+}
+nav li{
+  display:inline;
+}
+nav a{
+  text-decoration: none;
+  padding-right:10px
+}
+nav a:link{
+  color: whitesmoke;
+}
+nav a:visited{
+  color: whitesmoke;
+}
+nav a:hover{
+  color: yellow;
+}
+nav a:active{
+  color: darkgreen;
+}
+.script{
+  background-size: cover;
+   border-radius: 5px;
+    height: 100px;
+    width: 100px;
+    box-shadow: 2px 5px 7px 7px white;
+    /*background-color: black;*/
+    display:inline-block; 
+}
+.img-fluid-logo{
+margin: 0 auto;
+display:block;
+}
+.first-footer{
+	text-align: center;
+	border-top: 1px solid gray;
+	padding: 10px;
+	clear: both;
+	background-color: #87A270;
+	background-image:url(images/waves.jpg);
+}
+.second-footer{
+	text-align: center;
+	border-top: 1px solid gray;
+	padding: 10px;
+	clear: both;
+	background-color: mediumpurple;
+	color: #ffffff;
+}
+.fa-address-book, .fa-spinner, .fa-leaf{ /* none-footer icons */
+	font-size: 50px;
+	text-align: center;
+	position: relative;
+	margin-left: 100px;
+	color: mediumpurple;
+}
+.img-fluid{
+	border: 5px solid mediumpurple;
+	margin: 20px;
+	border-radius: 20px;
+}
+button{
+	color: mediumpurple;
+	padding: 10px;
+	border-radius: 10px;
+}
+
+.gallery .preview{
+    width: 100%;
+    height: auto;
+}
+
+.gallery .gallery-thumbnails img {
+    width: 100px;
+    height: 75px;
+    margin: 3px 10px 10px 0;
+}
+
+.gallery .gallery-thumbnails img:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.gallery .preview img#preview {
+    padding: 1px;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto !important;
+    display: block !important;
+}
+
+
+/* CSS Adjustments for Tablets */
+@media only screen and (max-width: 1024px) {
+	h1{
+		font-size: 1.8em;
+}
+/* css for smartphone*/
+@media only screen and (max-width: 768px) {
+	h1{
+		font-size: 1.5em;
+}
