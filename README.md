@@ -1,7 +1,8 @@
-- I’m currently working on Am curently working on a website porfolio as I've linked in this github.
--  I’m currently learning Am currently learning website creation and game development as well. 
--  I’m looking to collaborate on many projects that include game development and website creation
--  Ask me about anything coding related 
+- I’m currently working on a website porfolio as I've linked in this github.
+-  I’m currently learning website creation and game development as well. 
+-  I’m looking to collaborate on many projects that include game development and website creation.
+-  I’m looking for help with coding C# and getting familiar with Unity.
+-  Ask me about anything coding related.
 -  How to reach me: nejimaahmed7@gmail.com
 -  Pronouns: she/her
 - Fun fact: I have alot of different skills in diferent areas. (example: am good at art,dancing,coding,learning new thing, and etc.) 
