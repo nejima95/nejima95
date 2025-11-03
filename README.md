@@ -4,7 +4,7 @@
 -  Ask me about anything coding related 
 -  How to reach me: nejimaahmed7@gmail.com
 -  Pronouns: she/her
-- Fun fact: I have alot of different skills in diferent areas. (exampl: am good at art,dancing,coding,learning new thing, and etc.) 
+- Fun fact: I have alot of different skills in diferent areas. (example: am good at art,dancing,coding,learning new thing, and etc.) 
 <!--
 **nejima95/nejima95** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
