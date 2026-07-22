@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Nejima's portfolio :: Game</title>
+  <meta name="description" content="This is an example of a meta description. This will often show up in search results so it is important to write a high quality description for each page of a website">
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"> <!-- bootstrap -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+</head>
+<body onload="startGame()">
+  <header>
+      <img src="images/logo.png" alt="logo" height="133" width="245" class="img-fluid-logo">
+    </header>
+    <nav> 
+      <ul>
+        <li><a href="index.html">home</a></li>
+        <li><a href="portfolio.html">portfolio</a></li>
+        <li><a href="resume.html">resume</a></li>
+        <li><a href="game.html">game</a></li>
+      </ul>
+    </nav>
+
+   
+	
+		<!-- this is the main section -->
+		<main>
+			<h3> Games! </h3>
+				<p> This is a simple interactive game I made in a few hours that I made directly in the portfolio website. </p>
+			<!-- this div holds the game and game buttons -->
+			   <div id="game" ></div>
+   <div class="game-controls">
+      <button class="myButton" onmousedown="accelerate(-0.2)" onmouseup="accelerate(0.05)">ACCELERATE</button>
+     	<a href="" ><button class="myButton">PLAY AGAIN</button></a>
+   </div>
+
+<!-- This is the JavaScript for the game -->
+
+   <script>
+      var myGamePiece;
+      var myObstacles = [];
+      var myScore;
+      
+      function startGame() {
+          myGamePiece = new component(30, 30, "mediumpurple", 10, 120);
+          myGamePiece.gravity = 0.05;
+          myScore = new component("30px", "Consolas", "mediumpurple", 420, 40, "text");
+          myGameArea.start();
+      }
+      
+      var myGameArea = {
+          canvas : document.createElement("canvas"),
+          start : function() {
+              this.canvas.width = 640;
+              this.canvas.height = 360;
+              this.context = this.canvas.getContext("2d");
+              var myGame = document.getElementById("game");
+              myGame.insertBefore(this.canvas, myGame.childNodes[0]);        
+              this.frameNo = 0;
+              this.interval = setInterval(updateGameArea, 8);
+           },
+          clear : function() {
+              this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+          }
+      }
+      
+      function component(width, height, color, x, y, type) {
+          this.type = type;
+          this.score = 0;
+          this.width = width;
+          this.height = height;
+          this.speedX = 0;
+          this.speedY = 0;    
+          this.x = x;
+          this.y = y;
+          this.gravity = 0;
+          this.gravitySpeed = 0;
+          this.update = function() {
+              ctx = myGameArea.context;
+              if (this.type == "text") {
+                  ctx.font = this.width + " " + this.height;
+                  ctx.fillStyle = color;
+                  ctx.fillText(this.text, this.x, this.y);
+              } else {
+                  ctx.fillStyle = color;
+                  ctx.fillRect(this.x, this.y, this.width, this.height);
+              }
+          }
+          this.newPos = function() {
+              this.gravitySpeed += this.gravity;
+              this.x += this.speedX;
+              this.y += this.speedY + this.gravitySpeed;
+              this.hitBottom();
+          }
+          this.hitBottom = function() {
+              var rockbottom = myGameArea.canvas.height - this.height;
+              if (this.y > rockbottom) {
+                  this.y = rockbottom;
+                  this.gravitySpeed = 0;
+              }
+           }
+          this.crashWith = function(otherobj) {
+              var myleft = this.x;
+              var myright = this.x + (this.width);
+              var mytop = this.y;
+              var mybottom = this.y + (this.height);
+              var otherleft = otherobj.x;
+              var otherright = otherobj.x + (otherobj.width);
+              var othertop = otherobj.y;
+              var otherbottom = otherobj.y + (otherobj.height);
+              var crash = true;
+              if ((mybottom < othertop) || (mytop > otherbottom) || (myright < otherleft) || (myleft > otherright)) {
+                  crash = false;
+              }
+              return crash;
+          }
+      }
+      
+      function updateGameArea() {
+          var x, height, gap, minHeight, maxHeight, minGap, maxGap;
+          for (i = 0; i < myObstacles.length; i += 1) {
+              if (myGamePiece.crashWith(myObstacles[i])) {
+                  return;
+              } 
+          }
+          myGameArea.clear();
+          myGameArea.frameNo += 1;
+          if (myGameArea.frameNo == 1 || everyinterval(150)) {
+              x = myGameArea.canvas.width;
+              minHeight = 20;
+              maxHeight = 200;
+              height = Math.floor(Math.random()*(maxHeight-minHeight+1)+minHeight);
+              minGap = 50;
+              maxGap = 200;
+              gap = Math.floor(Math.random()*(maxGap-minGap+1)+minGap);
+              myObstacles.push(new component(20, height, "mediumpurple", x, 0));
+              myObstacles.push(new component(20, x - height - gap, "mediumpurple", x, height + gap));
+          }
+          for (i = 0; i < myObstacles.length; i += 1) {
+              myObstacles[i].x += -1;
+              myObstacles[i].update();
+          }
+          myScore.text="SCORE: " + myGameArea.frameNo;
+          myScore.update();
+          myGamePiece.newPos();
+          myGamePiece.update();
+      }
+      
+      function everyinterval(n) {
+          if ((myGameArea.frameNo / n) % 1 == 0) {return true;}
+          return false;
+      }
+      
+      function accelerate(n) {
+          myGamePiece.gravity = n;
+      }
+    </script>
+    <div class="container-fluid">
+            <div class="row">
+                  <div class="col-sm-12">
+                    <h3>Candy Slot Machine Game</h3>
+                    <p> This is a Candy Slot Machine game I made outside of the website, then embedded it to the website. </p>
+                    <iframe
+                      src="https://nejima95.github.io/CandyslotMachine/"
+                      width="800"
+                      height="600"
+                      title="Candy Slot Machine Game">
+                    </iframe>
+                  </div>
+                </div>
+              </div>
+                  <div class="container-fluid">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <p> These are my Memory, Simon says, Trivia1, Trivia2, and Maze game. I made these outside of the website, then added the links in different styles to my porfolio website. </p>
+                    <a href="https://nejima95.github.io/CandyslotMachine/" target="_blank">
+
+                   <p> Go to --> </p><h3> Memory Game </h3>
+                    </a>
+                  </div>              
+                </div>
+              </div>
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-sm-12">
+                     <a href="https://nejima95.github.io/BunnySimonSays/">
+                   <p> Go to --> Simon Says </p>
+                  </div>              
+                </div>
+              </div>
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-sm-12">
+                     <a href="https://nejima95.github.io/FloridaManTrivia/">
+                   <p> Go to --> </p><h3>  Trivia 1 </h3>
+                  </div>              
+                </div>
+              </div>
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-sm-12">
+                     <a href="https://nejima95.github.io/ReduxTrivia/">
+                   <p> Go to --> </p><h3>  Trivia 2 </h3>
+                  </div>              
+                </div>
+              </div>
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-sm-12">
+                     <a href="https://nejima95.github.io/Maze/">
+                  <h3> Go to --> Maze game </h3>
+                  </div>              
+                </div>
+              </div>
+            
+
+		</main>
+		<footer class="first-footer">
+      <div class="container-fluid">
+            <div class="row">
+                  <div class="col-sm-12">
+                    <h5> Thanks for visiting!</h5>
+                    <h7> hope you enjoyed my protfolio, check out my other socials linked here:</h7>
+                  </div>
+                </div>
+              </div>
+
+      <div class="container-fluid">
+            <div class="row">
+                  <div class="col-sm-4">
+                    <a href="mailto:nejima7@gmail.com/in/nejima/" target="_blank">
+                   <h6><i class="fa fa-envelope" aria-hidden="true"></i>
+                   </i>Contact me on gmail</h6>
+              </a>
+                      </div>
+                      <div class="col-sm-4">
+                        <a href="https://sites.google.com/d/1iffePY533m8ltLlFABzP4k1QXX3XrA9f/p/1Bi9JiXfnRY1gEK-tzm7Nt7fIhRAS6exD/edit" target="_blank"><h6><i class="fa fa-google" aria-hidden="true"></i>
+                          check out my efolio</h6>
+                      </div>
+                      <div class="col-sm-4">
+                        <a href="https://github.com/nejima95" target="_blank">
+                   <h6><i class="fa fa-github-alt" aria-hidden="true"></i>
+                   Github</h6>
+              </a>
+                        </div>
+    
+    <!--jQuery, Popper, and Bootstrap Javascript files-->
+    </footer>
+    <footer class="second-footer">
+      <small>&copy; Nejima Ahmed. All rights reserved.</small>
+    </footer>
+    <!--jQuery, Popper, and Bootstrap Javascript files-->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+
