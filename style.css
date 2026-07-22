@@ -1,14 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Honk&display=swap');
-.logo-photo{
-	float: 10px;
-	max-width: 13%;
-	height: auto;
-	margin: 10px 0 50px 30px;
-	justify-content: left;
-	align-content: center;
-	border-radius: 50%;
-	border: 10px solid #ffffff;
-	position: absolute;
+.logo-photo {
+    max-width: 13%;
+    height: auto;
+    margin: 10px 0 50px 30px;
+    border-radius: 50%;
+    border: 10px solid #ffffff;
+    position: absolute;
     top: 180px;
     left: 1015px;
 }
